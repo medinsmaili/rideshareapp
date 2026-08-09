@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 let authToken: string | null = null;
 
 const client = axios.create({
-  baseURL: 'https://api.nisu.app',
+  baseURL: 'https://your-domain.com', //change this for domain or localhost
   headers: { 'Content-Type': 'application/json' },
   timeout: 10000,
 });
