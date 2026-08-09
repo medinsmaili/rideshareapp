@@ -40,9 +40,9 @@ import { Setting } from './settings/setting.entity';
       type: 'postgres',
       host: process.env.DB_HOST || 'postgres',
       port: parseInt(process.env.DB_PORT || '5432', 10),
-      username: process.env.DB_USERNAME || 'nisu_admin',
+      username: process.env.DB_USERNAME || 'change_me',
       password: process.env.DB_PASSWORD, 
-      database: process.env.DB_DATABASE || 'nisu_db',
+      database: process.env.DB_DATABASE || 'change_me',
       entities: [User, Ride, RideAlert, City, MeetingPoint, Booking, Vehicle, Message, Report, Language, Translation, Setting],
       // ✅ FIX: Only synchronize in non-production environments to protect data
       synchronize: process.env.NODE_ENV !== 'production', 
