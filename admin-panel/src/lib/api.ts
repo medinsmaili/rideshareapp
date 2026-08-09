@@ -1,4 +1,4 @@
-const API_BASE = "https://api.nisu.app";
+const API_BASE = "https://your-api.com"; //change this to your api/backend configuration
 
 class ApiClient {
   private token: string | null = null;
