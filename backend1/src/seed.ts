@@ -9,9 +9,9 @@ const AppDataSource = new DataSource({
   type: 'postgres',
   host: 'localhost',
   port: 5432,
-  username: 'nisu_admin',
-  password: 'password123',
-  database: 'nisu_db',
+  username: 'change_me',
+  password: 'change_me',
+  database: 'change_me',
   entities: [User, Ride, City, MeetingPoint, Booking, Vehicle],
   synchronize: true,
 });
