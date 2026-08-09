@@ -1,0 +1,68 @@
+services:
+  api:
+    build: .
+    restart: always
+    expose:
+      - "3000"
+    # Persist profile pictures, driver licenses, and student IDs
+    volumes:
+      - ./uploads:/app/uploads
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USERNAME=change_me
+      - DB_PASSWORD=change_me
+      - DB_DATABASE=change_me
+      - JWT_SECRET=change_me
+      - ADMIN_SECRET_KEY=change_me
+      - SMTP_HOST=change_me
+      - SMTP_PORT=465
+      - SMTP_USER=change_me
+      - SMTP_PASS=change_me
+      - MAIL_FROM=noreply@change_me
+      
+      # ✅ OneSignal Connection Variables
+      - ONESIGNAL_APP_ID=change_me
+      - ONESIGNAL_REST_API_KEY=change_me
+
+    depends_on:
+      - postgres
+    networks:
+      - nisu_network
+
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_USER=change_me
+      - POSTGRES_PASSWORD=change_me
+      - POSTGRES_DB=change_me
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - nisu_network
+
+  caddy:
+    image: caddy:2
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./www:/srv                 # Landing page files
+      - ./admin-dist:/srv/admin     # Admin panel build files
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - api
+    networks:
+      - nisu_network
+
+volumes:
+  postgres_data:
+  caddy_data:
+  caddy_config:
+
+networks:
+  nisu_network:

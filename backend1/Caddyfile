@@ -1,0 +1,20 @@
+# 1. Main Landing Page
+nisu.app {
+    root * /srv
+    file_server
+}
+
+# 2. Backend API
+api.nisu.app {
+    reverse_proxy api:3000
+}
+
+# 3. Admin Panel (React SPA)
+admin.nisu.app {
+    root * /srv/admin
+    file_server
+    
+    # This ensures that refreshing the page on a sub-route 
+    # (like admin.nisu.app/users) doesn't result in a 404.
+    try_files {path} /index.html
+}
