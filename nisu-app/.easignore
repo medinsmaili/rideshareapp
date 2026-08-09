@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Generated native folders (EAS regenerates these from prebuild)
+android/
+ios/
+
+# Expo build/cache
+.expo/
+dist/
+build/
+web-build/
+expo-env.d.ts
+.metro-health-check*
+
+# Secrets & signing
+*.keystore
+*.jks
+*.p8
+*.p12
+*.key
+*.pem
+*.mobileprovision
+google-services.json
+GoogleService-Info.plist
+
+# Local env
+.env
+.env.*
+
+# Archives / binaries
+*.zip
+*.aab
+*.apk
+*.ipa
+
+# Editors / VCS
+.git/
+.vscode/
+.idea/
+.DS_Store
